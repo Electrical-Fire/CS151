@@ -70,6 +70,13 @@ int main()
         return -1;
     }
 
+    // jones.setPosition(xJones, yJones);
+    /* The setOrigin function sets the origin's 'x' coordinate to 75% of the sprite's size, and it's y coorinate
+        to zero. This setup gets the character positioned at the center of the squares, and staying in the same
+        spot when turning around. */
+    // jones.setOrigin(sf::Vector2f(jones.getTexture()->getSize().x * 0.75, 0));
+    // std::cout<<"Origin: "<<jones.getOrigin().x<<", "<< jones.getOrigin().y<<std::endl;
+
     sf::RectangleShape Pause(sf::Vector2f(512, 256));
     Pause.setFillColor(sf::Color::Black);
     Pause.setPosition(0, 0);
@@ -148,6 +155,64 @@ int main()
     
             const int level[] =
             {
+<<<<<<< HEAD
+                if (event.key.code == sf::Keyboard::Right)
+                {
+                    if (xJones < 512)
+                    {
+                        xJones = xJones + gridLength;
+                        usleep(9000);
+                        stepcount++;
+                        if(facing == 'L'){
+                            // jones.scale(-1.f, 1.f);    // This is a built-in function that flips the image.
+                            facing = 'R';
+                        }
+                    }
+                }
+                else if (event.key.code == sf::Keyboard::Left)
+                {
+                    if (xJones > 0)
+                    {
+                        xJones = xJones - gridLength;
+                        usleep(9000);
+                        stepcount++;
+                        if(facing == 'R'){
+                            // jones.scale(-1.f, 1.f);  // This is a built-in function that flips the image.
+                            facing = 'L';
+                        }
+                    }
+                }
+                else if (event.key.code == sf::Keyboard::Down)
+                {
+                    if (yJones < 224)
+                    {
+                        yJones = yJones + gridWidth;
+                        usleep(9000);
+
+                        stepcount++;
+                    }
+                }
+                else if (event.key.code == sf::Keyboard::Up)
+                {
+                    if (yJones > 0)
+                    {
+                        yJones = yJones - gridWidth;
+                        usleep(9000);
+
+                        stepcount++;
+                    }
+                }
+            }
+        }
+
+        // Render the map and the game elements.
+        window.clear();
+        window.draw(map);
+        // jones.setPosition(xJones, yJones);
+        // window.draw(jones);
+        window.display();
+        tileNum.findTile(xJones, yJones, gridLength, gridWidth);
+=======
                 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 2, 4, 0, 0, 0,
                 1, 1, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3,
@@ -171,6 +236,7 @@ int main()
     {
         std::cout<<"Error loading textures";
         exit(1);
+>>>>>>> 0fce64938e1d9198c23270f11841d917067bc2ca
     }
 
     mJim.setPosition(xJim, yJim);
