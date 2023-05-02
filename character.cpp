@@ -1,8 +1,9 @@
 #include "character.h"
+// using namespace cv;
 
 Character::Character()
 {
-    if (!mTexture.loadFromFile("IndianaJonesCanva.png")) // Gets the texture for the file
+    if (!mTexture.loadFromFile("IndianaJones.png")) // Gets the texture for the file
     {
         std::cout << "Error opening file\n";
         exit(1);
@@ -13,13 +14,19 @@ Character::Character()
     sf::Vector2u imageSize = mTexture.getSize(); // I think I need to get the image size for later
     std::cout<<imageSize.x;
     //453
-     mCharacter.setTextureRect(sf::IntRect(268,40,307,374));
+     // mCharacter.setTextureRect(sf::IntRect(268,40,307,374));
 
-    
-    mPosition.x = 0;
-    mPosition.y = 0;
-    mCharacter.setPosition(mPosition.x, mPosition.y); // Sets the postion at 0,0 in the default constructors
-    mCharacter.setScale(0.09, 0.09);                  // Setting scale at this for now
+    sf::Vector2f position;
+    position.x = 16;
+    position.y = 16;
+    mCharacter.setPosition(position.x, position.y); // Sets the postion at 0,0 in the default constructors
+    mCharacter.setScale(0.07, 0.07);   // Setting scale at this for now
+
+    mCharacter.setOrigin(169,205);
+
+    xPos = 16;
+    yPos = 16;
+    facing = 'R';
 
     // Trying to fix the size of the image and I need to figure ouut how to reduce the size of the 'whitespace' on the figure.
 
@@ -38,10 +45,6 @@ Character::Character()
 
     // Tells me the origin for the shape for testing
     //std::cout << "Origin: " << mSize.x << ", " << mSize.y <<s std::endl;
-
-    xPos = 0;
-    yPos = 0;
-    facing = 'R';
 }
 
 // Character::Character()
@@ -73,42 +76,41 @@ Character::Character()
 
 void Character::moveJones(sf::RenderWindow &window, sf::Event &event, int gridSize, int &stepcount)
 {
-
     if (event.type == sf::Event::KeyPressed)
     {
         if (event.key.code == sf::Keyboard::Right)
         {
-            if (xPos < 480)
+            if (xPos < 496)
             {
                 if (facing == 'L')
                 {
                      //mCharacter.setOrigin(sf::Vector2f(mCharacter.getTexture()->getSize().x * 0.25, 0));
                     //mCharacter.setRotation(180);
-                    mCharacter.scale(-1.f, 1.f); // This is a built-in function that flips the image.
+                    mCharacter.scale(-1.f, 1.f); // This is a built-in function that flips the image about the edge.
+                    // I want it to flip about the center later.
                     facing = 'R';
                 }
-                else{
                 xPos = xPos + gridSize;                   
-                }
                 usleep(9000);
                 stepcount++;
             }
         }
         else if (event.key.code == sf::Keyboard::Left)
         {
-            if (xPos > 32)
+            if (xPos > 16)
             {
                 if (facing == 'R')
                 {
                     // mCharacter.setOrigin(sf::Vector2f(mCharacter.getTexture()->getSize().x * -0.25, 0));
                     //  The problem is that the amount of whitespace creates problems.
                     //mCharacter.setRotation(180);
-                    mCharacter.scale(-1.f, 1.f); // This is a built-in function that flips the image.
+                    mCharacter.scale(-1.f, 1.f); // This is a built-in function that flips the image about the edge.
+                    // I want it to flip about the center later.  
+                    // may use void cv::flip(InputArray src, OutputArray dst, int flipCode=0)
+                    facing = 'R';
                     facing = 'L';
                 }
-                else{
                     xPos = xPos - gridSize;
-                }
                     usleep(9000); //delay after moving
                     stepcount++;
             }
@@ -125,11 +127,10 @@ void Character::moveJones(sf::RenderWindow &window, sf::Event &event, int gridSi
         }
         else if (event.key.code == sf::Keyboard::Up)
         {
-            if (yPos > 0)
+            if (yPos > 16)
             {
                 yPos = yPos - gridSize;
                 usleep(9000);
-
                 stepcount++;
             }
         }
@@ -161,3 +162,13 @@ void Character::moveJones(sf::RenderWindow &window, sf::Event &event, int gridSi
 //     INT // AttrType type; 
 //   );
 // }
+
+void Character::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(mCharacter, states);
+}
+
+void Character::setPosition(float x, float y)
+{
+    mCharacter.setPosition(x,y);
+}

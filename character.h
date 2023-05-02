@@ -9,7 +9,7 @@
 #include<cstdlib>
 #include "button.h"
 #include "game.h"
-
+// #include <opencv2/opencv.hpp>
 
 class Character: public sf::Sprite, public sf::Texture
 {
@@ -21,21 +21,23 @@ public:
     void moveJones(sf::RenderWindow &window, sf::Event &event,int gridSize, int &stepcount);
      //void runGameJones(MyTiles &MapObj, Dialogue &DiaObj,int tile,sf::RenderWindow &window,
     //Character &Jones,int &trap,sf::Event &event,sf::Clock dtClock,int stepcount,int gridLength,int gridWidth);
-
-
-    sf::Sprite mCharacter; //I am an idiot I forgot that I needed to actually draw the charcter. I put this in public because I think it would work better
-      int xPos;
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+    void setPosition(float x, float y);
+    int xPos;
     int yPos; // Making this public to see if I can solve problems.
+
 private:
-  
+    sf::Sprite mCharacter;
     char facing;
-    int stepcount = 0;
-    sf::Vector2f mPosition;
+    // int stepcount = 0;
+    // sf::Vector2f mPosition;
     sf::Texture mTexture;
     sf::Texture mHeight;
     sf::Texture mWidth;
     sf::Vector2f mSize;
 };
+
+
 
 #endif
 

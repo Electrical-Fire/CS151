@@ -17,9 +17,7 @@ public:
     Dialogue(std::string font, std::string message,int xPos, int yPos);
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
-    void Stop(const Dialogue &obj,int place,int tile,int xPos,int yPos,sf::RenderWindow &window,sf::CircleShape &jim,int &trap,sf::Event &event);
     void StopJones(const Dialogue &obj, int place, int tile, int xPos, int yPos, sf::RenderWindow &window, Character &jones, int &trap, sf::Event &event);
-    
     
 
 private:

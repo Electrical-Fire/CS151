@@ -10,17 +10,14 @@ int main()
      srand(time(NULL));
 
     // create the window
-
     sf::Clock dtClock;
-    float dt = 0.f;
+    // float dt = 0.f;
     // Clock used to help fix the input
     sf::RenderWindow window(sf::VideoMode(512, 256), "Tilemap");
 
     // Creating a shape that can be used
-
-    sf::Texture textureTile;
-    textureTile.loadFromFile("IndianaJonesCanva.png");
     Character jones;
+    Diamond diamond;
     
     // define the level with an array of tile indices
     sf::View view;
@@ -28,30 +25,40 @@ int main()
     view.setCenter(window.getSize().x / 2.f, window.getSize().y / 2.f);
 
 
-     int random = rand() %128;
-     //std::cout<<random;
+    // int random = rand() %128;
+    // std::cout<<random;
     int trap2 = 0;
     int stepcount =0;
 
     std::string message = "You notice a strange tile on the ground, and touch it with a 5 foot pole,"
                           " \n you then fall into a pit press Space to escape ";
-
-    Dialogue pit("OpenSans-Regular.ttf", message, 0, 0);
     
+    // Dialogue pit("OpenSans-Regular.ttf", message, 0, 0);
+    // Diamond pit("OpenSans-Regular.ttf", message, 0, 0);
+   //  Diamond spot(0, 0);
 
-    int tileNum;
+    // const int level[] =
+    // {
+    //     4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    //     4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 2, 4, 0, 0, 0,
+    //     1, 1, 4, 4, 4, 4, 4, 9, 3, 3, 3, 31, 3, 35, 3, 3,
+    //     23, 1, 0, 4, 2, 3, 3, 3, 3, 13, 1, 1, 1, 4, 4, 4,
+    //     4, 1, 1, 4, 3, 3, 60, 25, 4, 55, 1, 1, 1, 2, 4, 4,
+    //     4, 4, 1, 41, 3, 4, 18, 2, 4, 4, 1, 1, 1, 1, 2, 4,
+    //     2, 4, 1, 4, 3, 4, 26, 2, 2, 4, 1, 1, 1, 1, 1, 1,
+    //     4, 4, 1, 4, 3, 2, 2, 2, 4, 4, 4, 4, 1, 1, 1, 1,
+    // };
 
-    
-    const int level[] =
+        const int level[] =
     {
-        4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 2, 4, 0, 0, 0,
-        1, 1, 4, 4, 4, 43, 4, 9, 3, 3, 3, 31, 3, 35, 3, 3,
-        23, 1, 0, 4, 2, 3, 3, 3, 3, 13, 1, 1, 1, 4, 4, 4,
-        4, 1, 1, 4, 3, 3, 60, 25, 4, 55, 1, 1, 1, 2, 4, 4,
-        4, 4, 1, 41, 3, 4, 18, 2, 4, 4, 1, 1, 1, 1, 2, 4,
-        2, 4, 1, 4, 3, 4, 26, 2, 2, 4, 1, 1, 1, 1, 1, 1,
-        4, 4, 1, 4, 3, 2, 2, 2, 4, 4, 4, 4, 1, 1, 1, 1,
+        4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4,
+        4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4,
+        3, 3, 3, 3, 3, 4, 4, 3, 4, 4, 3, 3, 3, 3, 3, 3,
+        4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4,
+        4, 4, 3, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 3, 4, 4,
+        4, 4, 3, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 3, 4, 4,
+        4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4,
+        4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4,
     };
 
     
@@ -62,7 +69,7 @@ int main()
 
     float gridLength = 32;
     float gridWidth = 32;
-    float viewspeed = 1;
+    // float viewspeed = 1;
     MyTiles map;
 
     if (!map.load("rpg_textures.png", sf::Vector2u(gridLength, gridWidth), level, 16, 8))
@@ -83,20 +90,13 @@ int main()
 
     // run the main loop
         sf::Event event;
-
         playGame test;
 
-
         //Runs the game
-
-    
-        test.runGameJones(map,pit,70,window,jones,trap2,event,dtClock,stepcount,gridLength,gridWidth);     
-
-
+        test.runGameJones(map,diamond,window,jones,trap2,event,dtClock,stepcount,gridLength,gridWidth);     
 
     //std::cout<<tileNum;
     return 0;
-
 
    }
 
@@ -155,7 +155,6 @@ int main()
     
             const int level[] =
             {
-<<<<<<< HEAD
                 if (event.key.code == sf::Keyboard::Right)
                 {
                     if (xJones < 512)
@@ -212,7 +211,6 @@ int main()
         // window.draw(jones);
         window.display();
         tileNum.findTile(xJones, yJones, gridLength, gridWidth);
-=======
                 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 2, 4, 0, 0, 0,
                 1, 1, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3,
@@ -236,7 +234,6 @@ int main()
     {
         std::cout<<"Error loading textures";
         exit(1);
->>>>>>> 0fce64938e1d9198c23270f11841d917067bc2ca
     }
 
     mJim.setPosition(xJim, yJim);

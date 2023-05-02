@@ -1,25 +1,5 @@
 # CS151
 Final Project for Computer Science 151
- 
-SetUp on MacOS:
-<!-- open the terminal -->
-<!-- update the Ubuntu package lists -->
-$sudo apt update && sudo apt dist-upgrade
-% install the GNU compiler tools (gcc/g++) and the GDB debugger
-$ sudo apt install build-essential gdb
-<!-- now install git -->
-$ sudo apt install git
-% install SFML libraries
-$ sudo install homebrew
-<!-- clone the repository -->
-$ git clone https://github.com/Electrical-Fire/CS151 final
-% got to the final directory
-$ cd final
-<!-- compile the project: -->
-$ g++ *.cpp -o final -lsfml-graphics -lsfml-window -lsfml-system
-% run the game
-$ ./final
-
 
 SetUp on Linux (Ubuntu) system
 <!-- % open the terminal -->
@@ -29,19 +9,36 @@ $sudo apt update && sudo apt dist-upgrade
 $ sudo apt install build-essential gdb
 <!-- % now install git -->
 $ sudo apt install git
-<!-- install SFML libraries -->
+% <!-- install SFML libraries -->
 $ sudo install libsfml-dev
-% clone the repository
+<!-- % clone the repository -->
 $ git clone https://github.com/Electrical-Fire/CS151 final
-<!-- got to the final directory -->
+% <!-- got to the final directory -->
 $ cd final
-% compile the project
+<!-- % compile the project -->
 $ g++ -std=C++11 *.cpp -o final -lsfml-graphics -lsfml-window -lsfml-system
-<!-- run the game -->
+% run the game
 $ ./final
+
+ SetUp on MacOS with M1 chip
+<!-- open the terminal -->
+<!-- install gcc on mac -->
+brew install gcc@9
+<!-- % install git-->
+brew install git
+<!-- % install SFML libraries -->
+$ sudo install homebrew
+% <!-- clone the repository -->
+$ git clone https://github.com/Electrical-Fire/CS151 final
+<!-- % got to the final directory -->
+$ cd final
+% <!-- compile the project: -->
+$ g++ *.cpp -o final -lsfml-graphics -lsfml-window -lsfml-system
+<!-- % run the game -->
+$ ./final
+
 This is meant to be a treasure hunt game with an Indiana Jones character. Pressing the arrow keys will move 
 the character. When you land on a special square, you will receive a textbox which will tell you what 
 happens next. That basically sums it up.
-
 
 

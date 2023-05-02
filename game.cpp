@@ -1,5 +1,5 @@
 #include "game.h"
-bool MyTiles:: load(const std::string &tileset, sf::Vector2u tileSize, const int *tiles, unsigned int width, unsigned int height)
+bool MyTiles::load(const std::string &tileset, sf::Vector2u tileSize, const int *tiles, unsigned int width, unsigned int height)
     {
         // load the tileset texture
         if (!m_tileset.loadFromFile(tileset))
@@ -42,7 +42,7 @@ bool MyTiles:: load(const std::string &tileset, sf::Vector2u tileSize, const int
     }
 
 
-     void  MyTiles:: draw(sf::RenderTarget &target, sf::RenderStates states) const
+    void  MyTiles::draw(sf::RenderTarget &target, sf::RenderStates states) const
     {
         // apply the entiy's transform combine with the one that passed by the caller
         states.transform *= getTransform(); // getTransform is defined by sf::Transformable
@@ -53,7 +53,8 @@ bool MyTiles:: load(const std::string &tileset, sf::Vector2u tileSize, const int
     }
 
 
-    int MyTiles::findTile(int xPosition, int yPosition, int tileLength,int tileWidth) // Gets your position based on the x value and y value of your charcter 
+
+     sf::Vector2f MyTiles::findTileV(int xPosition, int yPosition, int tileLength,int tileWidth) // Gets your position based on the x value and y value of your charcter 
     // and returns the integer number of the tile that you are on. 
     {
         int X = (xPosition)/tileLength;
@@ -62,13 +63,26 @@ bool MyTiles:: load(const std::string &tileset, sf::Vector2u tileSize, const int
        //  std::cout<<yPosition<<std::endl;
 
 
-        Y = Y *16;
-        int yourTile = (X + Y);
-      //  std::cout<<X<<std::endl;
-        //std::cout<<Y<<std::endl;
+        sf::Vector2f yourTile;
+        yourTile.x = X;
+        yourTile.y = Y;
         return yourTile;
     }
 
 
+    // int MyTiles::findTile(int xPosition, int yPosition, int tileLength,int tileWidth) // Gets your position based on the x value and y value of your charcter 
+    // // and returns the integer number of the tile that you are on. 
+    // {
+    //     int X = (xPosition)/tileLength;
+    //     int Y = yPosition/tileWidth;
+    //    // std::cout<<xPosition<<std::endl;
+    //    //  std::cout<<yPosition<<std::endl;
 
+
+    //     Y = Y *16;
+    //     int yourTile = (X + Y);
+    //   //  std::cout<<X<<std::endl;
+    //     //std::cout<<Y<<std::endl;
+    //     return yourTile;
+    // }
     

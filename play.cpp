@@ -1,6 +1,81 @@
 #include "play.h"
 
+void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
+                             Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth) // moved becuase it is a long line
+{
+    while (window.isOpen())
+    {
+        // Updating dt
+
+        // dt = dtClock.restart().asSeconds();
+
+        // handle events
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+            //update
+            Jones.moveJones(window, event, gridLength, stepcount);
+
+            sf::Vector2f place = MapObj.findTileV(Jones.xPos, Jones.yPos, gridLength, gridWidth);
+            sf::Vector2f diaTile;
+
+            // diaTile.x = 0;
+            // diaTile.y = 7;
+            diaTile.x = rand() %16;
+            diaTile.y = rand() %8;
+            if (diaTile.x == 2 || diaTile.x == 8 || diaTile.x == 7){
+                diaTile.x += 1;
+            }
+            if(diaTile.y == 2){
+                diaTile.y += 1;
+            }
+
+            diaObj.DiamondFound(diaObj, place, diaTile, Jones.xPos, Jones.yPos, window, Jones, trap, event);
+            Jones.setPosition(Jones.xPos, Jones.yPos);
+        }
+        
+        // Render the map and the game elements.
+        window.clear();
+        window.draw(MapObj);
+
+        // Responsible for drawing picture
+        // Create a draw function in the Character class, then it should work without .mCharacter
+        window.draw(Jones);
+        // if found variable true, display diamond. Else do not display it
+        window.draw(diaObj);
+        window.display();
+
+
+        // int place = MapObj.findTile(Jones.xPos, Jones.yPos, gridLength, gridWidth);
+        // int randomTile= rand() %128;
+        // std::cout<< place;
+        // if(place==randomTile)
+        // {
+        //     std::cout<< "Diamond Found!";
+        //     place = -1;
+        // }
+        // DiaObj.StopJones(DiaObj, place, 2, Jones.xPos, Jones.yPos, window, Jones, trap, event);
+        // End of while loops
+    }
+}
+
+    // The function DiamondFound will be the replacement for the StopJones Function. I am no longer stopping
+    // character movement on a random square. Now I will just have a diamond hidden at a random square.
+    // When Jones steps on that random square, all I want to do is increment the score and make a diamond appear
+    // for visual effect. Those are the only two events the diamondFound function will be responsible for.
+    // Unlike StopJones, the DiamondFound function will not be in charge of selecting a random square. That 
+    // will now happen in the runGameJones function right here. The DiamondFound function will be called when 
+    // Jones steps on the selected square.
 /*
+
+
+
+
+
+
 playGame::playGame()
 {
      srand(time(NULL)); //To generate random see for place when I was testing.
@@ -189,37 +264,5 @@ void playGame:: move(sf::RenderWindow &window, sf::Event &event, int &xPos, int 
     }
 
 */
-void playGame::runGameJones(MyTiles &MapObj, Dialogue &DiaObj, int tile, sf::RenderWindow &window,
-                             Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth) // moved becuase it is a long line
-{
-    while (window.isOpen())
-    {
-        // Updating dt
 
-        // dt = dtClock.restart().asSeconds();
-
-        // handle events
-
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-
-            Jones.moveJones(window, event, gridLength, stepcount);
-        }
-
-        // Render the map and the game elements.
-        window.clear();
-        window.draw(MapObj);
-
-        window.draw(Jones.mCharacter);
-        window.display();
-
-        int place = MapObj.findTile(Jones.xPos, Jones.yPos, gridLength, gridWidth);
-        DiaObj.StopJones(DiaObj, place, 70, Jones.xPos, Jones.yPos, window, Jones, trap, event);
-        Jones.mCharacter.setPosition(Jones.xPos, Jones.yPos);
-        // End of while loops
-    }
-}
+     

@@ -10,6 +10,7 @@
 #include "button.h"
 #include "game.h"
 #include "dialogue.h"
+#include "diamond.h"
     
 
     //void move(sf::RenderWindow &window,sf::Event &event,int &xPos,int &yPos,int gridSize,int &stepcount);
@@ -19,26 +20,17 @@ class playGame //: sf::Drawable
     public:
     //playGame();  working on default constructor  for these things
 
- void runGameJones(MyTiles &MapObj, Dialogue &DiaObj, int tile, sf::RenderWindow &window,
+ void runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
                              Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth);
 
-
     private:    //I need to create variables so I don;t need to use main
-        sf::Event m_event;
-        int m_Gridsize;
-        int m_stepcount;
-        int mTrap;
+        // sf::Event m_event;
+        // int m_Gridsize;
+        // int m_stepcount;
+        // int mTrap;
         MyTiles map1;
         Dialogue Dia1;
-
-
-
-
-
 };
-
-
-
 
 
 #endif

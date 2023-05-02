@@ -17,7 +17,7 @@ public:
     Button();
     //Constructor that sets button label to s, button position to the position,  button size to size (given in pixels), and button color to color.
     Button(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Color color);
-    ~Button(){};
+    // .~Button(){};
     //change button position to position (what else needs to be changed?)
     void setPosition(sf::Vector2f position);
     //change button size to size (what else needs to be changed?)
@@ -26,17 +26,18 @@ public:
     void setColor(sf::Color btnColor);
     //change button label to s (what else needs to be changed?)
     void setText(std::string s);
-    void setColorTextNormal(sf::Color textNormalColor){mTextNormal = textNormalColor;}; //This was already decalred in th header
-    void setColorTextHover(sf::Color textHoverColor){mTextHover = textHoverColor;};
+    // void setColorTextNormal(sf::Color textNormalColor){mTextNormal = textNormalColor;}; //This was already decalred in th header
+    // void setColorTextHover(sf::Color textHoverColor){mTextHover = textHoverColor;};
 
-    sf::Vector2f getPosition(){return mPosition;};
-    sf::Vector2f getDimensions(){return sf::Vector2f(mButton.getGlobalBounds().width, mButton.getGlobalBounds().height);};
-    sf::Uint32 getState(){return mBtnState;};
+    // sf::Vector2f getPosition(){return mPosition;};
+    // sf::Vector2f getDimensions(){return sf::Vector2f(mButton.getGlobalBounds().width, mButton.getGlobalBounds().height);};
+    // sf::Uint32 getState(){return mBtnState;};
 
     //This function update the button state and/or look
     void update(sf::Event& e, sf::RenderWindow& window);
     //int isClicked(int clicked);
-    virtual void draw(sf::RenderTarget& target,sf::RenderStates states) const;
+    // virtual void draw(sf::RenderTarget& target,sf::RenderStates states) const;
+    void draw(sf::RenderTarget& target,sf::RenderStates states) const;
 
 private:
     sf::Sprite mButton;
