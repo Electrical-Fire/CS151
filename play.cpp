@@ -1,5 +1,6 @@
 #include "play.h"
 
+
 void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
                              Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth) // moved becuase it is a long line
 {
@@ -18,23 +19,22 @@ void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &
             }
             //update
             Jones.moveJones(window, event, gridLength, stepcount);
+            Jones.setPosition(Jones.xPos, Jones.yPos);
 
             sf::Vector2f place = MapObj.findTileV(Jones.xPos, Jones.yPos, gridLength, gridWidth);
-            sf::Vector2f diaTile;
 
-            // diaTile.x = 0;
-            // diaTile.y = 7;
-            diaTile.x = rand() %16;
-            diaTile.y = rand() %8;
-            if (diaTile.x == 2 || diaTile.x == 8 || diaTile.x == 7){
-                diaTile.x += 1;
-            }
-            if(diaTile.y == 2){
-                diaTile.y += 1;
-            }
+            // // diaTile.x = rand() %16;
+            // // diaTile.y = rand() %8;
+            // diaTile.x = 5;
+            // diaTile.y = 5;
+            // if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
+            //     diaTile.x += 1;
+            // }
+            // if(diaTile.y == 2){
+            //     diaTile.y += 1;
+            // }
 
-            diaObj.DiamondFound(diaObj, place, diaTile, Jones.xPos, Jones.yPos, window, Jones, trap, event);
-            Jones.setPosition(Jones.xPos, Jones.yPos);
+            diaObj.DiamondFound(diaObj, place);
         }
         
         // Render the map and the game elements.

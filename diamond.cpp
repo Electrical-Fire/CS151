@@ -9,9 +9,6 @@ Diamond::Diamond()
     }
     mDiamond.setTexture(mTexture); // sets the texture
 
-    found = false;
-    visible = false; 
-
     sf::Vector2f Position;
     Position.x = 0;
     Position.y = 0;
@@ -20,9 +17,11 @@ Diamond::Diamond()
     mDiamond.setOrigin(50, 50);
     // set the origin at the dead center
     // mDiamond.setOrigin()
+    found = false;
+    // visible = false;
 }
 
-void Diamond::DiamondFound(Diamond &diaObj, sf::Vector2f place, sf::Vector2f diaTile, int xPos, int yPos, sf::RenderWindow &window, Character &jones, int &trap, sf::Event &event)
+void Diamond::DiamondFound(Diamond &diaObj, sf::Vector2f place)
 {
     // Needs to accept a integer to see if function has already ran.
     // Replace this with a diamone image
@@ -34,29 +33,40 @@ void Diamond::DiamondFound(Diamond &diaObj, sf::Vector2f place, sf::Vector2f dia
 
     // int exit=trap;
     // std::cout <<exit;
-    if (trap == 0)
-    {
-        if(place == diaTile)
-        {
-            found = true;
+        sf::Vector2f diaTile; 
+        // diaTile.x = 7;
+        // diaTile.y = 0;
+        // diaTile.x = rand() %16;
+        // diaTile.y = rand() %8;
+        if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
+            diaTile.x += 1;
         }
-        // needs to accept a spot; This is where a random spot is selected!
-        if (found == true)
-        {
-            // I want to make a diamond appear visually for 1-2 seconds on the square Jones is on (place).
-            // The usleep() function will be used for this.
-            // Look at how Jones Position was initialized
-            // Outputting infinite times right now, use a boolean found variable to fix that
-             
-             // This sets the diamond position to the center of the square Jones is on
-            diaObj.setPosition( (diaTile.x * 32)+16, (diaTile.y * 32)+16);
-            window.draw(diaObj);
-            found = false;
+        if(diaTile.y == 2){
+            diaTile.y += 1;
+        }
 
-            trap = -1;
+        // diaTile.x = 5;
+        // diaTile.y = 5;
+
+        if(place == diaTile)
+        // needs to accept a spot; This is where a random spot is selected!
+
+            // I want to make a diamond appear visually for 1-2 seconds on the square Jones is on (place).
+            // Look at how Jones Position was initialized
+
+            // // diaTile.x = rand() %16;
+            // // diaTile.y = rand() %8;
+            // // diaTile.x = 5;
+            // // diaTile.y = 5;
+            // if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
+            //     diaTile.x += 1;
+            // }
+            // if(diaTile.y == 2){
+            //     diaTile.y += 1;
+            // }
+            diaObj.setPosition ((diaTile.x * 32)+16, (diaTile.y * 32)+16);
+            // window.draw(diaObj);
         }
-    }
-}
 
 
 void Diamond::draw(sf::RenderTarget &target, sf::RenderStates states) const

@@ -16,7 +16,7 @@ class Diamond : public sf::Sprite
         // virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
         // Increments the score and displays diamond visual effect when Jones lands on a selected square
-        void DiamondFound(Diamond &obj, sf::Vector2f place, sf::Vector2f diaTile, int xPos, int yPos, sf::RenderWindow &window, Character &jones, int &trap, sf::Event &event);
+        void DiamondFound(Diamond &obj, sf::Vector2f place);
         void draw(sf::RenderTarget &target, sf::RenderStates states) const;
         void setPosition(float x, float y);
 
@@ -26,6 +26,7 @@ class Diamond : public sf::Sprite
         sf::Texture mTexture;
         bool found;
         bool visible;
+        
 };
 
 #endif

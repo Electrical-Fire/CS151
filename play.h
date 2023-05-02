@@ -18,9 +18,7 @@
 class playGame //: sf::Drawable
 {
     public:
-    //playGame();  working on default constructor  for these things
-
- void runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
+    void runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
                              Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth);
 
     private:    //I need to create variables so I don;t need to use main
@@ -28,8 +26,8 @@ class playGame //: sf::Drawable
         // int m_Gridsize;
         // int m_stepcount;
         // int mTrap;
+        // Dialogue Dia1;
         MyTiles map1;
-        Dialogue Dia1;
 };
 
 
