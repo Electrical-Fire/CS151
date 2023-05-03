@@ -18,6 +18,7 @@
 class playGame //: sf::Drawable
 {
     public:
+    playGame();
     void runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
                              Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth);
 
@@ -28,6 +29,8 @@ class playGame //: sf::Drawable
         // int mTrap;
         // Dialogue Dia1;
         MyTiles map1;
+        bool found;
+        bool visible;
 };
 
 

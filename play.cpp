@@ -1,40 +1,65 @@
 #include "play.h"
 
 
+playGame::playGame()
+{
+    found = false;
+}
+
 void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
                              Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth) // moved becuase it is a long line
 {
-    while (window.isOpen())
+    sf::Vector2f place;
+    sf::Vector2f diaTile; 
+    // diaObj.diamondFound(diaObj, place, diaTile, found);
+
+    diaTile.x = rand() %16;
+    diaTile.y = rand() %8;
+    if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
+        diaTile.x += 1;
+    }
+    if(diaTile.y == 2){
+        diaTile.y += 1;
+    }
+    found = false;
+  
+    while (window.isOpen())   
     {
-        // Updating dt
-
-        // dt = dtClock.restart().asSeconds();
-
-        // handle events
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-            //update
+            place = MapObj.findTileV(Jones.xPos, Jones.yPos, gridLength, gridWidth);
             Jones.moveJones(window, event, gridLength, stepcount);
             Jones.setPosition(Jones.xPos, Jones.yPos);
 
-            sf::Vector2f place = MapObj.findTileV(Jones.xPos, Jones.yPos, gridLength, gridWidth);
+            if(place == diaTile)
+            {
+                diaObj.setPosition ((diaTile.x * 32)+16, (diaTile.y * 32)+16);
+                if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
+                    diaTile.x += 1;
+                }
+                if(diaTile.y == 2){
+                    diaTile.y += 1;
+                }
+               found = true;
+            }
 
-            // // diaTile.x = rand() %16;
-            // // diaTile.y = rand() %8;
-            // diaTile.x = 5;
-            // diaTile.y = 5;
-            // if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
-            //     diaTile.x += 1;
-            // }
-            // if(diaTile.y == 2){
-            //     diaTile.y += 1;
-            // }
+            if(found==true)
+            {
+                // diaTile.x++;
+                diaTile.x = rand() %16;
+                diaTile.y = rand() %8;
+                if (diaTile.x == 2 || diaTile.x == 7 || diaTile.x == 13){
+                    diaTile.x += 1;
+                }
+                if(diaTile.y == 2){
+                    diaTile.y += 1;
+                }
+                found = false;
+            }
 
-            diaObj.DiamondFound(diaObj, place);
+            if (event.type == sf::Event::Closed){
+                window.close();
+            }
         }
         
         // Render the map and the game elements.
@@ -47,7 +72,7 @@ void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &
         // if found variable true, display diamond. Else do not display it
         window.draw(diaObj);
         window.display();
-
+    }
 
         // int place = MapObj.findTile(Jones.xPos, Jones.yPos, gridLength, gridWidth);
         // int randomTile= rand() %128;
@@ -59,7 +84,6 @@ void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &
         // }
         // DiaObj.StopJones(DiaObj, place, 2, Jones.xPos, Jones.yPos, window, Jones, trap, event);
         // End of while loops
-    }
 }
 
     // The function DiamondFound will be the replacement for the StopJones Function. I am no longer stopping

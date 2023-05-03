@@ -159,6 +159,7 @@ void Button::update(sf::Event &e, sf::RenderWindow &window)
         }
     }
 }
+
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(mButton, states);
@@ -168,8 +169,7 @@ void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 void Button::setPosition(sf::Vector2f position)
 {
     mButton.setPosition(position);
-        mText.setPosition(position.x,position.y -mButton.getGlobalBounds().height/20);
-
+    mText.setPosition(position.x,position.y -mButton.getGlobalBounds().height/20);
 }
 // change button size to size (what else needs to be changed?)
 void Button::setSize(sf::Vector2f size)
