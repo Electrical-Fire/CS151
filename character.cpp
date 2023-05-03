@@ -90,11 +90,17 @@ void Character::moveJones(sf::RenderWindow &window, sf::Event &event, int gridSi
                     // I want it to flip about the center later.
                     facing = 'R';
                 }
-                xPos = xPos + gridSize;                   
-                usleep(9000);
-                stepcount++;
+
+                if(!(xPos==48 && yPos>=144) && !(xPos==208 && yPos<=176) && !(xPos==400 && yPos>=144)
+                    && !(xPos==304 && yPos==80))
+                {
+                    xPos = xPos + gridSize;                   
+                    usleep(9000);
+                    stepcount++;
+                }
             }
         }
+
         else if (event.key.code == sf::Keyboard::Left)
         {
             if (xPos > 16)
@@ -110,24 +116,33 @@ void Character::moveJones(sf::RenderWindow &window, sf::Event &event, int gridSi
                     facing = 'R';
                     facing = 'L';
                 }
+                if(!(xPos== 112 && yPos>=144) && !(xPos==272 && yPos<=176) && !(xPos==464 && yPos>=144)
+                    && !(xPos==176 && yPos==80))
+                {
                     xPos = xPos - gridSize;
                     usleep(9000); //delay after moving
-                    stepcount++;
+                    stepcount++;           
+                }
+
             }
         }
+
         else if (event.key.code == sf::Keyboard::Down)
         {
-            if (yPos < 224)
+            if (yPos < 224 && !(yPos==48 && xPos<=144) && !(yPos==48 && xPos>=336)
+                && !(xPos==80 && yPos==112) && !(xPos==432 && yPos==112))
             {
                 yPos = yPos + gridSize; //moves it the length of the gridsize
                 usleep(9000);
-
                 stepcount++;
             }
+
         }
+
         else if (event.key.code == sf::Keyboard::Up)
         {
-            if (yPos > 16)
+            if (yPos > 16 && !(yPos==112 && xPos<=144) && !(yPos==112 && xPos>=336)
+                && !(xPos==240 && yPos==208))
             {
                 yPos = yPos - gridSize;
                 usleep(9000);

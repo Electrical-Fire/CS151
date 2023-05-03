@@ -24,7 +24,7 @@ public:
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
     void setPosition(float x, float y);
     int xPos;
-    int yPos; // Making this public to see if I can solve problems.
+    int yPos;
 
 private:
     sf::Sprite mCharacter;
