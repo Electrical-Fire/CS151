@@ -2,6 +2,7 @@
 Indiana Jones: Hidden Diamond Search!
 
 
+
 SetUp on Linux (Ubuntu) system
 <!-- % open the terminal -->
 <!-- % update the Ubuntu package lists -->
