@@ -1,6 +1,7 @@
 # CS151
 Indiana Jones: Hidden Diamond Search!
 
+
 SetUp on Linux (Ubuntu) system
 <!-- % open the terminal -->
 <!-- % update the Ubuntu package lists -->
@@ -47,5 +48,5 @@ The function responsible for running the game is the runGameJones function which
 <img width="1792" alt="Screen Shot 2023-05-04 at 10 11 07 AM" src="https://user-images.githubusercontent.com/69916317/236276921-71d1b3c8-c685-46db-be3a-aaafede6fd85.png">
 
 Things I Would Improve: 
-- I could have figured out how to create a screen output if I had spent more time on it earlier on.
+- Ideally there would be a scoreboard on the screen. I could have figured out how to create a screen output if I had spent more time on it earlier on.
 - I would have liked to create a sound effect that goes "Cha-ching" when Jones finds a diamond. That would have been a great touch of creativity.
