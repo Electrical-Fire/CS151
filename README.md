@@ -44,4 +44,5 @@ This game is not perfect and certainly not fancy, but it is definitely a fun gam
 The function responsible for running the game is the runGameJones function which is called in main.cpp, declared in play.h, and defined in play.cpp. Here you will find the code that controls the rendering of the game elements. If you right click on the functions called inside runGameJones, and look at everywhere they're used by clcking "Go To References," that would be the quickest way to understand what all the other files are responsible for. 
 
 
+<img width="1792" alt="Screen Shot 2023-05-04 at 10 11 07 AM" src="https://user-images.githubusercontent.com/69916317/236276921-71d1b3c8-c685-46db-be3a-aaafede6fd85.png">
 
