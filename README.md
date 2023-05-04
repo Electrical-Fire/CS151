@@ -1,5 +1,5 @@
 # CS151
-Final Project for Computer Science 151
+Indiana Jones: Hidden Diamond Search!
 
 SetUp on Linux (Ubuntu) system
 <!-- % open the terminal -->
