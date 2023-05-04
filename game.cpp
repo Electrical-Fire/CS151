@@ -35,8 +35,6 @@ bool MyTiles::load(const std::string &tileset, sf::Vector2u tileSize, const int 
                 quad[1].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
                 quad[2].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
                 quad[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
-
-
             }
             return true;
     }

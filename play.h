@@ -9,8 +9,9 @@
 #include<cstdlib>
 #include "button.h"
 #include "game.h"
-#include "dialogue.h"
+#include "score.h"
 #include "diamond.h"
+#include "ctime"
     
 
     //void move(sf::RenderWindow &window,sf::Event &event,int &xPos,int &yPos,int gridSize,int &stepcount);
@@ -19,7 +20,7 @@ class playGame //: sf::Drawable
 {
     public:
     playGame();
-    void runGameJones(MyTiles &MapObj, Diamond &diaObj, sf::RenderWindow &window,
+    void runGameJones(MyTiles &MapObj, Diamond &diaObj, int score, sf::RenderWindow &window,
                              Character &Jones, int &trap, sf::Event &event, sf::Clock dtClock, int stepcount, int gridLength, int gridWidth);
 
     private:    //I need to create variables so I don;t need to use main
@@ -30,7 +31,8 @@ class playGame //: sf::Drawable
         // Dialogue Dia1;
         MyTiles map1;
         bool found;
-        bool visible;
+        // bool visible;
+        
 };
 
 

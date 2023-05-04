@@ -6,9 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "${fileDirname}",
-      "program": "${fileDirname}/${fileBasenameNoExtension}"
-
+      "cwd": "/Users/lylenelson21/Documents/CS151/assignments/final",
+      "program": "/Users/lylenelson21/Documents/CS151/assignments/final/build/Debug/outDebug"
     }
   ]
 }

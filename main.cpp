@@ -1,6 +1,6 @@
 #include "game.h"
 #include "character.h"
-#include "dialogue.h"
+#include "score.h"
 #include "play.h"
 #include <iostream>
  
@@ -30,12 +30,10 @@ int main()
     int trap2 = 0;
     int stepcount =0;
 
-    std::string message = "You notice a strange tile on the ground, and touch it with a 5 foot pole,"
-                          " \n you then fall into a pit press Space to escape ";
-    
+    // std::string message = "Score: ";
+    // int score = 0;
+    // Score showScore("OpenSans-Regular.ttf", message, score, 416, 0);
     // Dialogue pit("OpenSans-Regular.ttf", message, 0, 0);
-    // Diamond pit("OpenSans-Regular.ttf", message, 0, 0);
-   //  Diamond spot(0, 0);
 
     // const int level[] =
     // {
@@ -92,8 +90,9 @@ int main()
         sf::Event event;
         playGame test;
 
+        int score = 0; // The scoreboard begins at 0
         //Runs the game
-        test.runGameJones(map,diamond,window,jones,trap2,event,dtClock,stepcount,gridLength,gridWidth);     
+        test.runGameJones(map,diamond,score,window,jones,trap2,event,dtClock,stepcount,gridLength,gridWidth);     
 
     //std::cout<<tileNum;
     return 0;
