@@ -87,31 +87,17 @@ void playGame::runGameJones(MyTiles &MapObj, Diamond &diaObj, int score, sf::Ren
                 window.close();
             }
         
-        // Render the map and the game elements.
-        window.clear();
-        window.draw(MapObj);
+            // Render the map and the game elements.
+            window.clear();
+            window.draw(MapObj);
 
-        // Responsible for drawing picture
-        // Create a draw function in the Character class, then it should work without .mCharacter
-        window.draw(Jones);
-        // if found variable true, display diamond. Else do not display it
-        window.draw(diaObj);
-        
-        window.display();
+            // Responsible for drawing picture
+            // Create a draw function in the Character class, then it should work without .mCharacter
+            window.draw(Jones);
+            // if found variable true, display diamond. Else do not display it
+            window.draw(diaObj);
+            
+            window.display();
+        }
     }
-
-        // int place = MapObj.findTile(Jones.xPos, Jones.yPos, gridLength, gridWidth);
-        // int randomTile= rand() %128;
-        // std::cout<< place;
-        // if(place==randomTile)
-        // {
-        //     std::cout<< "Diamond Found!";
-        //     place = -1;
-        // }
-        // DiaObj.StopJones(DiaObj, place, 2, Jones.xPos, Jones.yPos, window, Jones, trap, event);
-        // End of while loops
-}
-
-    
-
 }     

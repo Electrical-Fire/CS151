@@ -7,7 +7,6 @@
 #include <iostream>
 #include <string>
 #include<cstdlib>
-#include "button.h"
 #include "game.h"
 #include "score.h"
 #include "diamond.h"

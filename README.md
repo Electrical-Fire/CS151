@@ -37,8 +37,11 @@ $ g++ *.cpp -o final -lsfml-graphics -lsfml-window -lsfml-system
 <!-- % run the game -->
 $ ./final
 
-This is meant to be a treasure hunt game with an Indiana Jones character. Pressing the arrow keys will move 
-the character. When you land on a special square, you will receive a textbox which will tell you what 
-happens next. That basically sums it up.
+This is a diamond-collecting game where you play as an Indiana Jones character, and the objective is to find hidden diamonds. The diamonds are placed on random squares on the grid and shown only when the character hits the square. When that happens, a diamond appears on the square briefly. There are some barrier walls that the character cannot penetrate. The program has conditionals that prevent diamonds from appearing on barrier squares, so you'll never need to worry about that. The score is incremented every time Jones hits a diamond, and the score is always shown on the console. 
+
+This game is not perfect and certainly not fancy, but it is definitely a fun game. The most fun way to play this game, is by setting a timer on the phone and playing the game until the timer goes off, trying to score as many diamonds as possible in that time. You could pass the laptop around and compete with friends to see who can score the most diamonds in a given time, such as one minute. If you play the game this way, you'll be having so much fun it won't even cross your mind that the game could be fancier. The best attribute of this game is that it's simple and fun to play.
+
+The function responsible for running the game is the runGameJones function which is called in main.cpp, declared in play.h, and defined in play.cpp. Here you will find the code that controls the rendering of the game elements. If you right click on the functions called inside runGameJones, and look at everywhere they're used by clcking "Go To References," that would be the quickest way to understand what all the other files are responsible for. 
+
 
 
